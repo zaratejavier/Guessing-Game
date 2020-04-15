@@ -37,7 +37,7 @@
   animation: fade 3s linear;
 }
 
-.win{
+.wins{
   border-radius: 100%;
-  background-color: purple !important;
+  background-color: purple ;
 }

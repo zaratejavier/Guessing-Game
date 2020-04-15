@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var gameArea= document.getElementById('game-area');
   var numGuesses = 0;
   var correctGuesses = 0;
-  var ballPosition, userGuess;
+  var ballPosition;
+  var userGuess;
 
   //Function
   function genBallPosition(){
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function reset(){
+    displayCounts()
     ballPosition = null;
     userGuess = null;
     gameArea.innerHTML = '';
@@ -35,15 +37,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function reveal(){
     var userBox = document.getElementById('box-' + userGuess);
-    userBox.className = userGuess === ballPosition ? 'Box reveal win' : 'ball reveal'
+    userBox.className = userGuess === ballPosition ? 'Box reveal wins' : 'ball reveal'
     var boxes= document.getElementsByClassName('box');
     for (var i = 0; i < boxes.length; i++){
       boxes[i].removeEventListener('click',makeGuess);
     }
     setTimeout( function() {
       reset();
-    },3000)
+    },1000)
+
   }
+
+
+  function displayCounts() {
+    alert('You have guessed: ' + numGuesses);
+    alert('Correct guesses: ' + correctGuesses)
+  }
+
 
   function makeGuess (e) {
     genBallPosition();
@@ -52,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     userGuess = parseInt(numericPart);
     incCounters();
     reveal();
-
   }
 
   function drawBoxes(){
@@ -75,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
     drawBoxes();
   }
 
-  
   //////////////////////////////////////////END OF FUNCTIONS/////////////////////////////////////////////////
 
   //listeners
@@ -89,4 +97,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   startButton.addEventListener('click',startGame);
-});
+})
