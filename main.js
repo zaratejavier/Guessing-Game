@@ -24,15 +24,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function calcAverage() {
+    var average = document.createElement('p')
+    average.innerHTML = correctGuesses + " / " + numGuesses;
+    average.className = 'average';
+    top.append(average);
+    // alert(correctGuesses + " / " + numGuesses)
 
   }
 
   function reset(){
-    displayCounts()
+    
     ballPosition = null;
     userGuess = null;
     gameArea.innerHTML = '';
     drawBoxes();
+    displayCounts()
+    calcAverage()
   }
 
   function reveal(){
@@ -50,8 +57,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   function displayCounts() {
-    alert('You have guessed: ' + numGuesses);
-    alert('Correct guesses: ' + correctGuesses)
+    // alert('You have guessed: ' + numGuesses);
+    // alert('Correct guesses: ' + correctGuesses)
+
+    var guess = document.createElement('p')
+    guess.innerHTML = ('You have guessed: ' + numGuesses + ' Correct guesses: ' + numGuesses);
+    guess.className = 'guess';
+    top.append(guess);
   }
 
 
