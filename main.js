@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var startbox = document.getElementById('start-game')
   var top =document.getElementById('top');
   var gameArea= document.getElementById('game-area');
+  var average = document.getElementById('average');
+  var guessCount = document.getElementById('numGuesses');
   var numGuesses = 0;
   var correctGuesses = 0;
   var ballPosition;
@@ -24,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function calcAverage() {
-    var average = document.createElement('p')
+    // var average = document.getElementById('average')
     average.innerHTML = correctGuesses + " / " + numGuesses;
-    average.className = 'average';
+    // average.className = 'average';
     top.append(average);
     // alert(correctGuesses + " / " + numGuesses)
 
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     setTimeout( function() {
       reset();
-    },1000)
+    },3000)
 
   }
 
@@ -60,10 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // alert('You have guessed: ' + numGuesses);
     // alert('Correct guesses: ' + correctGuesses)
 
-    var guess = document.createElement('p')
-    guess.innerHTML = ('You have guessed: ' + numGuesses + ' Correct guesses: ' + numGuesses);
-    guess.className = 'guess';
-    top.append(guess);
+    guessCount.innerHTML = 'Number of guesses: ' + numGuesses + '\n Correct guesses: ' + correctGuesses
+    top.append(guessCount)
   }
 
 
