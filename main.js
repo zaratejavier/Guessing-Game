@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var gameArea= document.getElementById('game-area');
   var average = document.getElementById('average');
   var guessCount = document.getElementById('numGuesses');
+  var intro = document.getElementById('instructions')
   var numGuesses = 0;
   var correctGuesses = 0;
+  var incorrectGuesses = 0;
   var ballPosition;
   var userGuess;
 
@@ -23,15 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if(ballPosition === userGuess){
       correctGuesses += 1
     }
+    else{
+      incorrectGuesses += 1 
+    }
   }
 
   function calcAverage() {
-    // var average = document.getElementById('average')
-    average.innerHTML = correctGuesses + " / " + numGuesses;
-    // average.className = 'average';
+    average.innerHTML = "Average: " + correctGuesses + " / " + numGuesses;
     top.append(average);
-    // alert(correctGuesses + " / " + numGuesses)
-
+    average.className = 'border'
   }
 
   function reset(){
@@ -62,8 +64,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // alert('You have guessed: ' + numGuesses);
     // alert('Correct guesses: ' + correctGuesses)
 
-    guessCount.innerHTML = 'Number of guesses: ' + numGuesses + '\n Correct guesses: ' + correctGuesses
+    guessCount.innerHTML = (
+    "Number of guesses: " + numGuesses + "\n "
+     + " Correct guesses: " + correctGuesses
+      + " Incorrect: " + incorrectGuesses)
     top.append(guessCount)
+
+    guessCount.className = 'border2'
+
+  
   }
 
 
@@ -77,6 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function drawBoxes(){
+    intro.innerHTML = "Click on a square to see if you can find the purple ball. Your score will be diplayed at the bottom"
+
     for (var i = 0; i < 3; i++){
       var box= document.createElement('div');
       box.className = 'box';
@@ -84,6 +95,8 @@ document.addEventListener("DOMContentLoaded", function () {
       gameArea.append(box);
       box.addEventListener('click', makeGuess);
     }
+
+
   }
 
   function startGame(){

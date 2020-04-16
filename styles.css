@@ -1,3 +1,7 @@
+
+body{
+  background-color: #dbdbdb;
+}
 .container{
   display: flex;
   justify-content: center;
@@ -44,9 +48,19 @@
 
 p{
   font-weight: bolder;
+  
 }
 
-#average{
+/* #average, #numGuesses{
   text-align: center;
+  border-style: solid;  
+  padding: 30px;
+} */
 
+.border, .border2{
+  border-style: solid;
+  text-align: center;
+  padding: 30px;
+  background-color: rgb(46, 108, 108);
+  /* width: 50%; */
 }
